@@ -1,0 +1,26 @@
+# Auto detect text files and normalize line endings to LF
+* text=auto
+
+# Shell scripts
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Documents
+*.md text eol=lf
+README* text eol=lf
+LICENSE text eol=lf
+
+# Configuration
+*.json text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf
+
+# Source code
+*.cs text eol=lf
+*.csproj text eol=lf
+
+# Binary files
+*.dll binary
+*.exe binary
+*.so binary

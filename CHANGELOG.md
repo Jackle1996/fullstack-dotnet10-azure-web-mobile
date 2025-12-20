@@ -1,0 +1,1 @@
+Semantic‑release will override this automatically.

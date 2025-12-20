@@ -1,5 +1,6 @@
 ﻿using HealthTracking.Api.Data;
-using HealthTracking.Api.Models;
+using HealthTracking.Application.Dtos;
+using HealthTracking.Domain;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -77,7 +78,7 @@ namespace HealthTracking.Api.Tests
         {
             var client = _factory.CreateClient();
 
-            var dto = new HealthRecordDto
+            var dto = new HealthRecordCreateDto
             {
                 MedicationType = "Vitamin D",
                 WeightKg = 72.5m,

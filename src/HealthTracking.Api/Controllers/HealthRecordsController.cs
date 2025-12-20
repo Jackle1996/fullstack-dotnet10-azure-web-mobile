@@ -1,5 +1,6 @@
 ﻿using HealthTracking.Api.Data;
 using HealthTracking.Api.Models;
+using HealthTracking.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

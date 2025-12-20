@@ -1,4 +1,4 @@
-using HealthTracking.Api.Models;
+using HealthTracking.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace HealthTracking.Api.Data;
@@ -14,23 +14,23 @@ public class HealthTrackingDbContext(DbContextOptions<HealthTrackingDbContext> o
         modelBuilder.Entity<HealthRecord>(entity =>
         {
             entity.HasKey(e => e.Id);
-            
+
             entity.Property(e => e.WeightKg)
                 .HasPrecision(5, 2)
                 .IsRequired();
-            
+
             entity.Property(e => e.BodyFatPercentage)
                 .HasPrecision(5, 2)
                 .IsRequired();
-            
+
             entity.Property(e => e.BodyWaterPercentage)
                 .HasPrecision(5, 2)
                 .IsRequired();
-            
+
             entity.Property(e => e.MedicationType)
                 .HasMaxLength(100)
                 .IsRequired();
-            
+
             entity.Property(e => e.RecordedAt)
                 .IsRequired();
 

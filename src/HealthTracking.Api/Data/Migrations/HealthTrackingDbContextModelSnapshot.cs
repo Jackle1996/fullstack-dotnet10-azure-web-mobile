@@ -22,7 +22,7 @@ namespace HealthTracking.Api.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("HealthTracking.Api.Models.HealthRecord", b =>
+            modelBuilder.Entity("HealthTracking.Domain.HealthRecord", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

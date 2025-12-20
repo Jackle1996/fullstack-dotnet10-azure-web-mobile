@@ -1,4 +1,6 @@
-﻿namespace HealthTracking.Api.Models
+﻿using HealthTracking.Domain;
+
+namespace HealthTracking.Api.Models
 {
     public static class HealthRecordExtensions
     {

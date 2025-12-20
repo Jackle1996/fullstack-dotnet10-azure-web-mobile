@@ -1,6 +1,7 @@
 <Solution>
-  <Project Path="src/HealthTracking.AppHost/HealthTracking.AppHost.csproj" />
-  <Project Path="src/HealthTracking.ServiceDefaults/HealthTracking.ServiceDefaults.csproj" />
   <Project Path="src/HealthTracking.Api/HealthTracking.Api.csproj" />
+  <Project Path="src/HealthTracking.AppHost/HealthTracking.AppHost.csproj" />
+  <Project Path="src/HealthTracking.Domain/HealthTracking.Domain.csproj" Id="80b052f0-3241-483f-8265-2a780a727d5e" />
+  <Project Path="src/HealthTracking.ServiceDefaults/HealthTracking.ServiceDefaults.csproj" />
   <Project Path="tests/HealthTracking.Api.Tests/HealthTracking.Api.Tests.csproj" Id="9dd36217-d152-483d-b6d1-b4e46a8d8c14" />
 </Solution>

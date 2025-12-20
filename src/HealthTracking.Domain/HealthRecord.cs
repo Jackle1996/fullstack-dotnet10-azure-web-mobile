@@ -1,4 +1,4 @@
-namespace HealthTracking.Api.Models;
+namespace HealthTracking.Domain;
 
 public class HealthRecord
 {

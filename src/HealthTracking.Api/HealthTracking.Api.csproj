@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HealthTracking.Domain\HealthTracking.Domain.csproj" />
     <ProjectReference Include="..\HealthTracking.ServiceDefaults\HealthTracking.ServiceDefaults.csproj" />
   </ItemGroup>
 

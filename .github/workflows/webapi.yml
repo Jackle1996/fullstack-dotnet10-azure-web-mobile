@@ -1,0 +1,36 @@
+name: WebApi
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    paths: 
+      - "src/HealthTracking.WebApi/**" 
+      - "tests/HealthTracking.WebApi.Tests/**" 
+      - ".github/workflows/webapi.yml"
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore backend
+        run: dotnet restore src/HealthTracking.WebApi/HealthTracking.WebApi.csproj
+
+      - name: Build backend
+        run: dotnet build src/HealthTracking.WebApi/HealthTracking.WebApi.csproj --configuration Release --no-restore
+
+      - name: Restore tests
+        run: dotnet restore tests/HealthTracking.WebApi.Tests/HealthTracking.WebApi.Tests.csproj
+
+      - name: Run tests
+        run: dotnet test tests/HealthTracking.WebApi.Tests/HealthTracking.WebApi.Tests.csproj --configuration Release --no-restore

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace HealthTracking.WebApi.Data.Migrations
+namespace HealthTracking.Api.Data.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

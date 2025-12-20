@@ -1,5 +1,5 @@
-﻿using HealthTracking.WebApi.Data;
-using HealthTracking.WebApi.Models;
+﻿using HealthTracking.Api.Data;
+using HealthTracking.Api.Models;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,7 +8,7 @@ using System.Net.Http.Json;
 using Testcontainers.MsSql;
 
 
-namespace HealthTracking.WebApi.Tests
+namespace HealthTracking.Api.Tests
 {
     [TestFixture]
     public class HealthRecordsControllerTests

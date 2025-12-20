@@ -1,9 +1,9 @@
-﻿using HealthTracking.WebApi.Data;
-using HealthTracking.WebApi.Models;
+﻿using HealthTracking.Api.Data;
+using HealthTracking.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace HealthTracking.WebApi.Controllers
+namespace HealthTracking.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

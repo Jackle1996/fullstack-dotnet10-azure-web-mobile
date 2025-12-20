@@ -1,7 +1,7 @@
-using HealthTracking.WebApi.Models;
+using HealthTracking.Api.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace HealthTracking.WebApi.Data;
+namespace HealthTracking.Api.Data;
 
 public class HealthTrackingDbContext(DbContextOptions<HealthTrackingDbContext> options) : DbContext(options)
 {

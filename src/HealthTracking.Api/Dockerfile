@@ -12,19 +12,19 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["HealthTracking.WebApi/HealthTracking.WebApi.csproj", "HealthTracking.WebApi/"]
-RUN dotnet restore "./HealthTracking.WebApi/HealthTracking.WebApi.csproj"
+COPY ["HealthTracking.Api/HealthTracking.Api.csproj", "HealthTracking.Api/"]
+RUN dotnet restore "./HealthTracking.Api/HealthTracking.Api.csproj"
 COPY . .
-WORKDIR "/src/HealthTracking.WebApi"
-RUN dotnet build "./HealthTracking.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/HealthTracking.Api"
+RUN dotnet build "./HealthTracking.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./HealthTracking.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./HealthTracking.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "HealthTracking.WebApi.dll"]
+ENTRYPOINT ["dotnet", "HealthTracking.Api.dll"]

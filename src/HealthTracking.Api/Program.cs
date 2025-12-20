@@ -1,4 +1,4 @@
-using HealthTracking.WebApi.Data;
+using HealthTracking.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -40,7 +40,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(options =>
     {
         // Point Swagger UI at the Aspire/OpenAPI endpoint
-        options.SwaggerEndpoint("/openapi/v1.json", "HealthTracking.WebApi v1");
+        options.SwaggerEndpoint("/openapi/v1.json", "HealthTracking.Api v1");
         // Changes the swagger UI to be hosted under /openapi/index.html
         options.RoutePrefix = "openapi";
     });

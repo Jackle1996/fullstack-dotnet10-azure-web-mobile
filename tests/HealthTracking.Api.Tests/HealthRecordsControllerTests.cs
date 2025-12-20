@@ -55,9 +55,9 @@ namespace HealthTracking.Api.Tests
             {
                 var db = scope.ServiceProvider.GetRequiredService<HealthTrackingDbContext>();
                 db.HealthRecords.AddRange(
-                    new HealthRecord { RecordedAt = new DateTime(2025, 1, 1), MedicationType = "A" },
-                    new HealthRecord { RecordedAt = new DateTime(2025, 6, 1), MedicationType = "B" },
-                    new HealthRecord { RecordedAt = new DateTime(2025, 12, 1), MedicationType = "C" }
+                    new HealthRecord { RecordedAt = new DateTime(2025, 1, 1), MedicationType = "A", WeightKg = 50.5m },
+                    new HealthRecord { RecordedAt = new DateTime(2025, 6, 1), MedicationType = "B", WeightKg = 50.5m },
+                    new HealthRecord { RecordedAt = new DateTime(2025, 12, 1), MedicationType = "C", WeightKg = 50.5m }
                 );
                 db.SaveChanges();
             }

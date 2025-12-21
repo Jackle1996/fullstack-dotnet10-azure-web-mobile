@@ -3,11 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:HealthTracking.Mobile"
              xmlns:components="clr-namespace:HealthTracking.Mobile.Components"
+             xmlns:ui="clr-namespace:HealthTracking.UI;assembly=HealthTracking.UI"
              x:Class="HealthTracking.Mobile.MainPage">
 
     <BlazorWebView x:Name="blazorWebView" HostPage="wwwroot/index.html">
         <BlazorWebView.RootComponents>
-            <RootComponent Selector="#app" ComponentType="{x:Type components:Routes}" />
+            <!-- <RootComponent Selector="#app" ComponentType="{x:Type components:Routes}" />-->
+            <RootComponent ComponentType="{x:Type ui:Component1}" Selector="#app" />
         </BlazorWebView.RootComponents>
     </BlazorWebView>
 

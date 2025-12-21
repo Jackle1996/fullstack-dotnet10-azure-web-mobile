@@ -3,6 +3,7 @@
   <Project Path="src/HealthTracking.AppHost/HealthTracking.AppHost.csproj" />
   <Project Path="src/HealthTracking.Application/HealthTracking.Application.csproj" Id="ae143ee3-4c88-4528-8b8d-7f9d74e665bf" />
   <Project Path="src/HealthTracking.Domain/HealthTracking.Domain.csproj" Id="80b052f0-3241-483f-8265-2a780a727d5e" />
+  <Project Path="src/HealthTracking.Mobile/HealthTracking.Mobile.csproj" />
   <Project Path="src/HealthTracking.ServiceDefaults/HealthTracking.ServiceDefaults.csproj" />
   <Project Path="src/HealthTracking.UI/HealthTracking.UI.csproj" />
   <Project Path="src/HealthTracking.Web/HealthTracking.Web.csproj" />

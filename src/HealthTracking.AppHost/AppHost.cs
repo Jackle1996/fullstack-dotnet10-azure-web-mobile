@@ -10,4 +10,6 @@ builder.AddProject<Projects.HealthTracking_Api>("healthtracking-Api")
 
 builder.AddProject<Projects.HealthTracking_Web>("healthtracking-web");
 
+builder.AddProject<Projects.HealthTracking_Mobile>("healthtracking-mobile");
+
 builder.Build().Run();

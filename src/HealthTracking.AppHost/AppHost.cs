@@ -8,4 +8,6 @@ builder.AddProject<Projects.HealthTracking_Api>("healthtracking-Api")
     .WaitFor(sql)
     .WithUrl("openapi", "Open API UI");
 
+builder.AddProject<Projects.HealthTracking_Web>("healthtracking-web");
+
 builder.Build().Run();

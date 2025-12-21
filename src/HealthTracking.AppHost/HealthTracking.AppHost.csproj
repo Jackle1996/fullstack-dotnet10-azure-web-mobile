@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HealthTracking.Api\HealthTracking.Api.csproj" />
+    <ProjectReference Include="..\HealthTracking.Web\HealthTracking.Web.csproj" />
   </ItemGroup>
 
 </Project>

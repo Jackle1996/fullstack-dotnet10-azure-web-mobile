@@ -1,0 +1,44 @@
+name: Web
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    paths: 
+      - "src/HealthTracking.Web/**" 
+      - "tests/HealthTracking.Web.Tests/**" 
+      - ".github/workflows/web.yml"
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v5
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Restore web app
+        run: dotnet restore src/HealthTracking.Web/HealthTracking.Web.csproj
+
+      - name: Build web app
+        run: dotnet build src/HealthTracking.Web/HealthTracking.Web.csproj --configuration Release --no-restore
+
+      # - name: Restore tests
+      #   run: dotnet restore tests/HealthTracking.Web.Tests/HealthTracking.Web.Tests.csproj
+
+      # - name: Run tests
+      #   run: dotnet test tests/HealthTracking.Web.Tests/HealthTracking.Web.Tests.csproj --configuration Release --no-restore

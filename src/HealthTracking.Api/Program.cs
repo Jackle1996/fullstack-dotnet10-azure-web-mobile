@@ -41,6 +41,42 @@ using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<HealthTrackingDbContext>();
     await dbContext.Database.MigrateAsync();
+
+    // Seed some dummy HealthRecords if the table is empty
+    if (!await dbContext.HealthRecords.AnyAsync())
+    {
+        var now = DateTime.UtcNow;
+        var seed = new[]
+        {
+            new HealthTracking.Domain.HealthRecord
+            {
+                WeightKg = 70.25m,
+                BodyFatPercentage = 15.3m,
+                BodyWaterPercentage = 55.2m,
+                MedicationType = "None",
+                RecordedAt = now.AddDays(-7)
+            },
+            new HealthTracking.Domain.HealthRecord
+            {
+                WeightKg = 69.80m,
+                BodyFatPercentage = 15.1m,
+                BodyWaterPercentage = 55.5m,
+                MedicationType = "Vitamin D",
+                RecordedAt = now.AddDays(-3)
+            },
+            new HealthTracking.Domain.HealthRecord
+            {
+                WeightKg = 70.00m,
+                BodyFatPercentage = 14.9m,
+                BodyWaterPercentage = 55.0m,
+                MedicationType = "None",
+                RecordedAt = now
+            }
+        };
+
+        dbContext.HealthRecords.AddRange(seed);
+        await dbContext.SaveChangesAsync();
+    }
 }
 
 app.MapDefaultEndpoints();

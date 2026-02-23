@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HealthTracking.Application\HealthTracking.Application.csproj" />
     <ProjectReference Include="..\HealthTracking.ServiceDefaults\HealthTracking.ServiceDefaults.csproj" />
     <ProjectReference Include="..\HealthTracking.UI\HealthTracking.UI.csproj" />
   </ItemGroup>

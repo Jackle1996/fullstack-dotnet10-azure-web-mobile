@@ -8,6 +8,14 @@ builder.AddServiceDefaults();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+// Register a named HttpClient for calling the API. Configure the base address from configuration
+// key "ApiBaseUrl" or fallback to localhost. Set this so UI components can obtain a client via
+// IHttpClientFactory instead of using Navigation.BaseUri.
+builder.Services.AddHttpClient("HealthTrackingApi", client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration.GetValue<string>("ApiBaseUrl") ?? "https://localhost:7004");
+});
+
 var app = builder.Build();
 
 app.MapDefaultEndpoints();

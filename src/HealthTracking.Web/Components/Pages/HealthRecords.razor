@@ -1,0 +1,66 @@
+@page "/health-records"
+@using HealthTracking.Application.Dtos
+@inject IHttpClientFactory HttpClientFactory
+
+<h3>Health Records (last 30 days)</h3>
+
+@if (_loading)
+{
+    <p>Loading...</p>
+}
+else if (_records?.Any() != true)
+{
+    <p>No records found.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Recorded At (UTC)</th>
+                <th>Weight (kg)</th>
+                <th>Body Fat (%)</th>
+                <th>Body Water (%)</th>
+                <th>Medication</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in _records)
+            {
+                <tr>
+                    <td>@r.RecordedAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    <td>@r.WeightKg</td>
+                    <td>@r.BodyFatPercentage</td>
+                    <td>@r.BodyWaterPercentage</td>
+                    <td>@r.MedicationType</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<HealthRecordReadDto>? _records;
+    private bool _loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var client = HttpClientFactory.CreateClient("HealthTrackingApi");
+            var start = DateTime.UtcNow.AddDays(-30).ToString("o");
+            var end = DateTime.UtcNow.ToString("o");
+            var url = $"/api/HealthRecords?startDate={Uri.EscapeDataString(start)}&endDate={Uri.EscapeDataString(end)}";
+
+            _records = await client.GetFromJsonAsync<List<HealthRecordReadDto>>(url) ?? new List<HealthRecordReadDto>();
+        }
+        catch
+        {
+            _records = new List<HealthRecordReadDto>();
+        }
+        finally
+        {
+            _loading = false;
+        }
+    }
+}
